@@ -37,10 +37,10 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>ASP.NET Razor</h1>
-					<h3>View Engine</h3>
+					<h1>Git</h1>
+					<h3>GitHub</h3>
 					<p>
-						<small>Equipe: Graziele, Kather, Lucas</small>
+						<small>Equipe: Lucas</small>
 					</p>
 				</section>
 
@@ -142,7 +142,7 @@
 						</p>
 					</section>
 				</section>
-				
+
 				<section>
 					<section>
 						<h2>Conversões</h2>
@@ -158,13 +158,13 @@
 						<p>
 						    <strong class="fragment grow highlight-blue">AsInt:</strong> Converte uma string para inteiro;
 						</p>
-						
+
 						<pre><code data-trim contenteditable>
-var myIntNumber = 0;   
-var myStringNum = "539";   
-if(myStringNum.IsInt() == true) {  
-   myIntNumber = myStringNum.AsInt();   
-}  
+var myIntNumber = 0;
+var myStringNum = "539";
+if(myStringNum.IsInt() == true) {
+   myIntNumber = myStringNum.AsInt();
+}
 						</code></pre>
 					</section>
 
@@ -175,12 +175,12 @@ if(myStringNum.IsInt() == true) {
 						<p>
 					        <strong class="fragment grow highlight-blue">AsDateTime:</strong> Converte uma string (ex.: "31/12//2069") para data-hora;
 					    </p>
-					    
+
 					    <pre><code data-trim contenteditable>
 var myDateString = "31/12//2069";
 var newDate = myDateString.AsDateTime();
 
-// Retorna DateTime.MinValue ou o valor especificado, 
+// Retorna DateTime.MinValue ou o valor especificado,
 // se o valor da string é inválido
 						</code></pre>
 					</section>
@@ -192,7 +192,7 @@ var newDate = myDateString.AsDateTime();
 						<p>
 							<strong class="fragment grow highlight-blue">AsBool:</strong> Converte uma string "true"/"false" para booleano;
 						</p>
-						
+
 						<pre><code data-trim contenteditable>
 var myStringBool = "True";
 var myVar = myStringBool.AsBool();
@@ -209,7 +209,7 @@ var myVar = myStringBool.AsBool();
 						<p>
 							<strong class="fragment grow highlight-blue">AsFloat:</strong> Converte uma string que tem um valor decimal (ex.: "6.66") para float;
 						</p>
-						
+
 						<pre><code data-trim contenteditable>
 var myStringDec = "6.660";
 var myDecNum = myStringDec.AsFloat();
@@ -218,7 +218,7 @@ var myDecNum = myStringDec.AsFloat();
 // se o valor da string é inválido
 						</code></pre>
 					</section>
-					
+
 					<section>
 						<p>
 							<strong class="fragment grow highlight-blue">IsDecimal:</strong> Verifica se é um tipo decimal válido;
@@ -226,7 +226,7 @@ var myDecNum = myStringDec.AsFloat();
 						<p>
 							<strong class="fragment grow highlight-blue">AsDecimal:</strong> Converte uma string que tem um valor decimal (ex.: "6.66") para decimal (No ASP.NET, decimal é mais preciso que float);
 						</p>
-						
+
 						<pre><code data-trim contenteditable>
 var myStringDec = "6.660";
 var myDecNum = myStringDec.AsDecimal();
@@ -235,12 +235,12 @@ var myDecNum = myStringDec.AsDecimal();
 // se o valor da string é inválido
 						</code></pre>
 					</section>
-					
+
 					<section>
 					    <p>
 							<strong class="fragment grow highlight-blue">ToString:</strong> Converte qualquer tipo para uma string;
 						</p>
-						
+
 						<pre><code data-trim contenteditable>
 int num1 = 17;
 int num2 = 76;
@@ -251,66 +251,66 @@ string myString = num1.ToString() + num2.ToString();
 						</code></pre>
 					</section>
 				</section>
-				
+
 				<section data-background="#141414">
-					
+
 					<section>
 						<h1>Exemplos</h1>
 						<a href="https://github.com/AgtLucas/bsi-rest-sample/tree/master/CM" target="_blank">Não clique aqui!</a>
 					</section>
-					
+
 					<section>
 						<pre><code data-trim contenteditable>
-@{ 
-    var fullName = ""; 
-    
-    if(IsPost) { 
-  
-        // Recupera o valor informado 
+@{
+    var fullName = "";
+
+    if(IsPost) {
+
+        // Recupera o valor informado
         // no formulário
-        var name = Request["name"]; 
-        var lastName = Request["lastname"]; 
-        
+        var name = Request["name"];
+        var lastName = Request["lastname"];
+
         fullName = name +  " " + lastName;
-        
-    } 
+
+    }
 }
 
-    
-<!DOCTYPE html> 
-<html lang="en"> 
-  <head> 
-    <title>Objetos</title> 
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Objetos</title>
     <meta charset="utf-8" />
-  </head> 
-<body> 
-    
-  <p>Digite o seu nome e sobrenome:</p> 
-    
-  <form action="" method="post"> 
-    
-    <p><label for="name">Nome:</label> 
-      <input id="name" type="text" name="name" /> 
-    </p> 
-    
-     <p><label for="lastname">Sobrenome:</label> 
-      <input id="lastname" type="text" name="lastname" /> 
-    </p> 
-          
-    
-    <p><input type="submit" value="Enviar" /></p> 
-    
-  </form> 
-  
-  <p>Nome Completo: <b> @nomeCompleto </b></p> 
-  
-</body> 
+  </head>
+<body>
+
+  <p>Digite o seu nome e sobrenome:</p>
+
+  <form action="" method="post">
+
+    <p><label for="name">Nome:</label>
+      <input id="name" type="text" name="name" />
+    </p>
+
+     <p><label for="lastname">Sobrenome:</label>
+      <input id="lastname" type="text" name="lastname" />
+    </p>
+
+
+    <p><input type="submit" value="Enviar" /></p>
+
+  </form>
+
+  <p>Nome Completo: <b> @nomeCompleto </b></p>
+
+</body>
 </html>
 						</code></pre>
 					</section>
-					
+
 				</section>
-				
+
 				<section data-background="#0076C5">
 					<h3>Referências:</h3>
 					<p>
@@ -323,7 +323,7 @@ string myString = num1.ToString() + num2.ToString();
 						<a href="http://www.asp.net/web-pages/tutorials/basics/2-introduction-to-asp-net-web-programming-using-the-razor-syntax" target="_blank">http://www.asp.net/web-pages/tutorials/basics/2-introduction-to-asp-net-web-programming-using-the-razor-syntax</a>;
 					</p>
 				</section>
-				
+
 				<section data-background="#08c">
 					<h1>Dúvidas?</h1>
 				</section>
@@ -531,7 +531,7 @@ function linkify( selector ) {
 					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
 				</section> -->
 
-		
+
 
 			</div>
 
