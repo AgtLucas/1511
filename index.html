@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Razor View Engine</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab | Razor">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>ASP.NET Razor</h1>
+					<h3>View Engine</h3>
+					<p>
+						<small>Equipe: Graziele, Kather, Lucas</small>
+					</p>
+				</section>
+
+				<section>
+					<section>
+						<h2>Introdução - O que é o Razor?</h2>
+						<br>
+						<p>
+							Razor é uma sintaxe view engine do ASP.NET usado para criação de páginas dinâmicas com C#, .NET ou Visual Basic.
+						</p>
+					</section>
+
+					<section>
+						<p>
+							Seu desenvolvimento teve inicio em Junho de 2010, sendo lançado pela Microsoft em Janeiro de 2011 junto com o ASP.NET MVC3 no Visual Studio 2010 e Microsoft WebMatrix.
+						</p>
+					</section>
+
+					<section>
+						<p>
+							Baseado na sintaxe do C#, Razor permite o desenvolvedor usar um workflow parecido com HTML, ao invés dos blocos do ASPX <strong class="fragment highlight-blue"><% %></strong>
+						</p>
+					</section>
+
+					<section>
+						<p>
+							Sua sintaxe sempre começa com o <strong class="fragment highlight-blue">@</strong> e nem sempre é necessário fechar o bloco de código
+						</p>
+					</section>
+
+					<section>
+						<p>
+							A ideia do Razor otimizar o workflow do desenvolvedor, reduzindo a quantidade de keystrokes (teclas pressionadas) e facilitando o entendimento do código, pois se comparado com a sintaxe ASPX, Razor é muito mais semântico.
+						</p>
+					</section>
+				</section>
+
+				<!-- Example of nested vertical slides -->
+				<section>
+					<section>
+						<h2>Vantagens do Razor</h2>
+					</section>
+					<section>
+						<p class="fragment grow highlight-blue">Não é uma linguagem nova</p>
+						<p class="fragment grow highlight-red">Compacta</p>
+						<p class="fragment grow highlight-blue">Workflow fluído</p>
+						<p class="fragment grow highlight-red">Fácil de aprender e usar</p>
+						<p class="fragment grow highlight-blue">Compatível com testes unitários</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Desvantagens do Razor</h2>
+					</section>
+					<section>
+						<p class="fragment grow highlight-blue">O código pode ficar um pouco confusso</p>
+						<p class="fragment grow highlight-red">Fácil confundir tags Server side com Client side</p>
+						<!-- <p class="fragment grow highlight-blue">Pouca reusabilidade</p> -->
+						<!-- <p class="fragment grow highlight-red">Confuso chamar um template Razor como se ele fosse um método</p> -->
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Helpers</h2>
+						<p>
+							O Razor conta com alguns Helpers para facilitar a vida do desenvolvedor:
+						</p>
+					</section>
+
+					<section>
+						<p>
+							<strong class="fragment grow highlight-blue">Chart:</strong> Processa um gráfico, oferecendo os mesmos recursos como o controle de gráfico no ASP.NET 4;
+						</p>
+					</section>
+
+					<section>
+						<p>
+							<strong class="fragment grow highlight-blue">Webgrid:</strong> Processa uma grade de dados, com funcionalidade de paginação e ordenação;
+						</p>
+					</section>
+
+					<section>
+						<p>
+							<strong class="fragment grow highlight-blue">Crypto:</strong> Utiliza algoritmos de hash para criar senhas devidamente criptografadas;
+						</p>
+					</section>
+
+					<section>
+						<p>
+							<strong class="fragment grow highlight-blue">WebImage:</strong> Processa uma imagem;
+						</p>
+					</section>
+
+					<section>
+						<p>
+							<strong class="fragment grow highlight-blue">WebEmail:</strong> Envia uma mensagem de e-mail;
+						</p>
+					</section>
+				</section>
+				
+				<section>
+					<section>
+						<h2>Conversões</h2>
+						<p>
+							O Razor possuí alguns metódos que auxiliam na conversão dos tipos de dados:
+						</p>
+					</section>
+
+					<section>
+						<p>
+							<strong class="fragment grow highlight-blue">IsInt:</strong> Verifica se é um tipo inteiro válido;
+						</p>
+						<p>
+						    <strong class="fragment grow highlight-blue">AsInt:</strong> Converte uma string para inteiro;
+						</p>
+						
+						<pre><code data-trim contenteditable>
+var myIntNumber = 0;   
+var myStringNum = "539";   
+if(myStringNum.IsInt() == true) {  
+   myIntNumber = myStringNum.AsInt();   
+}  
+						</code></pre>
+					</section>
+
+					<section>
+						<p>
+							<strong class="fragment grow highlight-blue">IsDateTime:</strong> Verifica se é um tipo data-hora válido;
+						</p>
+						<p>
+					        <strong class="fragment grow highlight-blue">AsDateTime:</strong> Converte uma string (ex.: "31/12//2069") para data-hora;
+					    </p>
+					    
+					    <pre><code data-trim contenteditable>
+var myDateString = "31/12//2069";
+var newDate = myDateString.AsDateTime();
+
+// Retorna DateTime.MinValue ou o valor especificado, 
+// se o valor da string é inválido
+						</code></pre>
+					</section>
+
+					<section>
+						<p>
+							<strong class="fragment grow highlight-blue">IsBool:</strong> Verifica se é um tipo booleano válido;
+						</p>
+						<p>
+							<strong class="fragment grow highlight-blue">AsBool:</strong> Converte uma string "true"/"false" para booleano;
+						</p>
+						
+						<pre><code data-trim contenteditable>
+var myStringBool = "True";
+var myVar = myStringBool.AsBool();
+
+// Retorna false ou o valor especificado,
+// se o valor da string é inválido
+						</code></pre>
+					</section>
+
+					<section>
+						<p>
+							<strong class="fragment grow highlight-blue">IsFloat:</strong> Verifica se é um tipo float válido;
+						</p>
+						<p>
+							<strong class="fragment grow highlight-blue">AsFloat:</strong> Converte uma string que tem um valor decimal (ex.: "6.66") para float;
+						</p>
+						
+						<pre><code data-trim contenteditable>
+var myStringDec = "6.660";
+var myDecNum = myStringDec.AsFloat();
+
+// Retorna "0.0" ou o valor especificado,
+// se o valor da string é inválido
+						</code></pre>
+					</section>
+					
+					<section>
+						<p>
+							<strong class="fragment grow highlight-blue">IsDecimal:</strong> Verifica se é um tipo decimal válido;
+						</p>
+						<p>
+							<strong class="fragment grow highlight-blue">AsDecimal:</strong> Converte uma string que tem um valor decimal (ex.: "6.66") para decimal (No ASP.NET, decimal é mais preciso que float);
+						</p>
+						
+						<pre><code data-trim contenteditable>
+var myStringDec = "6.660";
+var myDecNum = myStringDec.AsDecimal();
+
+// Retorna "0.0" ou o valor especificado,
+// se o valor da string é inválido
+						</code></pre>
+					</section>
+					
+					<section>
+					    <p>
+							<strong class="fragment grow highlight-blue">ToString:</strong> Converte qualquer tipo para uma string;
+						</p>
+						
+						<pre><code data-trim contenteditable>
+int num1 = 17;
+int num2 = 76;
+
+string myString = num1.ToString() + num2.ToString();
+
+// 1776
+						</code></pre>
+					</section>
+				</section>
+				
+				<section data-background="#141414">
+					
+					<section>
+						<h1>Exemplos</h1>
+						<a href="https://github.com/AgtLucas/bsi-rest-sample/tree/master/CM" target="_blank">Não clique aqui!</a>
+					</section>
+					
+					<section>
+						<pre><code data-trim contenteditable>
+@{ 
+    var fullName = ""; 
+    
+    if(IsPost) { 
+  
+        // Recupera o valor informado 
+        // no formulário
+        var name = Request["name"]; 
+        var lastName = Request["lastname"]; 
+        
+        fullName = name +  " " + lastName;
+        
+    } 
+}
+
+    
+<!DOCTYPE html> 
+<html lang="en"> 
+  <head> 
+    <title>Objetos</title> 
+    <meta charset="utf-8" />
+  </head> 
+<body> 
+    
+  <p>Digite o seu nome e sobrenome:</p> 
+    
+  <form action="" method="post"> 
+    
+    <p><label for="name">Nome:</label> 
+      <input id="name" type="text" name="name" /> 
+    </p> 
+    
+     <p><label for="lastname">Sobrenome:</label> 
+      <input id="lastname" type="text" name="lastname" /> 
+    </p> 
+          
+    
+    <p><input type="submit" value="Enviar" /></p> 
+    
+  </form> 
+  
+  <p>Nome Completo: <b> @nomeCompleto </b></p> 
+  
+</body> 
+</html>
+						</code></pre>
+					</section>
+					
+				</section>
+				
+				<section data-background="#0076C5">
+					<h3>Referências:</h3>
+					<p>
+						Slides do professor Cleiton;
+					</p>
+					<p>
+						<a href="http://www.asp.net/web-pages/overview/more-resources/asp-net-web-pages-api-reference" target="_blank">http://www.asp.net/web-pages/overview/more-resources/asp-net-web-pages-api-reference</a>;
+					</p>
+					<p>
+						<a href="http://www.asp.net/web-pages/tutorials/basics/2-introduction-to-asp-net-web-programming-using-the-razor-syntax" target="_blank">http://www.asp.net/web-pages/tutorials/basics/2-introduction-to-asp-net-web-programming-using-the-razor-syntax</a>;
+					</p>
+				</section>
+				
+				<section data-background="#08c">
+					<h1>Dúvidas?</h1>
+				</section>
+
+				<!-- <section>
+					<section>
+						<h2>Como o JSF funciona?</h2>
+						<p class="fragment shrink">
+							JSF é baseado em um modelo de UI baseado em componentes, usando arquivos XML chamados de views ou Facelets views.
+						</p>
+					</section>
+					<section>
+						<p class="fragment grow">
+							Os pedidos são processados pelo FacesServlet, que carrega o modelo da view adequado e constrói a ávorede de componentes, processa os eventos e apresenta a resposta para o cliente.
+						</p>
+					</section>
+
+					<section>
+						<p class="fragment grow">
+							O estado de componentes de UI e outros objetos de interesse de escopo, são salvos no final de cada pedido em um processo chamado <strong class="fragment highlight-blue">stateSaving</strong> e restaurado na próxima criação dessa view.
+						</p>
+					</section>
+
+					<section>
+						<p class="fragment shrink">
+							Objetos e estados podem ser salvos tanto no lado do servidor, quanto no lado do cliente.
+						</p>
+					</section>
+				</section>
+
+				<section>
+					<h2>Ciclo de vida</h2>
+					<img class="fragment" src="../pictures/cvjsf.png">
+				</section>
+
+				<section>
+					<section>
+						<h2>Componentes</h2>
+						<p>JSF possui por padrão uma série de tags para gerar componentes de UI.</p>
+	      		<p>Exemplos:</p>
+					</section>
+
+					<section>
+						<pre><code data-trim contenteditable>
+
+						</code></pre>
+					</section>
+
+					<section>
+						<p>
+							Para atender a demanda dos desenvolvedores por componentes mais sofisticados, existem várias extensões do JSF que seguem o mesmo ciclo e modelo da especificação.
+						</p>
+						<p>Exemplos:</p>
+					</section>
+
+					<section>
+						<p class="fragment grow"><a href="http://www.jboss.org/richfaces" target="_blank">RichFaces - JBoss</a></p>
+						<p class="fragment grow"><a href="http://www.primefaces.org/" target="_blank">PrimeFaces</a></p>
+						<p class="fragment grow"><a href="http://www.icesoft.org/java/projects/ICEfaces/overview.jsf" target="_blank">IceFaces</a></p>
+					</section>
+				</section>
+
+				<section data-background="#08c">
+					<h1>Dúvidas?</h1>
+				</section> -->
+<!--
+				<section data-markdown>
+					<script type="text/template">
+						## Markdown support
+
+						For those of you who like that sort of thing. Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
+
+						```
+						<section data-markdown>
+						  ## Markdown support
+
+						  For those of you who like that sort of thing.
+						  Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
+						</section>
+						```
+					</script>
+				</section>
+
+				<section id="transitions">
+					<h2>Transition Styles</h2>
+					<p>
+						You can select from different transitions, like: <br>
+						<a href="?transition=cube#/transitions">Cube</a> -
+						<a href="?transition=page#/transitions">Page</a> -
+						<a href="?transition=concave#/transitions">Concave</a> -
+						<a href="?transition=zoom#/transitions">Zoom</a> -
+						<a href="?transition=linear#/transitions">Linear</a> -
+						<a href="?transition=fade#/transitions">Fade</a> -
+						<a href="?transition=none#/transitions">None</a> -
+						<a href="?#/transitions">Default</a>
+					</p>
+				</section>
+
+				<section id="themes">
+					<h2>Themes</h2>
+					<p>
+						Reveal.js comes with a few themes built in: <br>
+						<a href="?#/themes">Default</a> -
+						<a href="?theme=sky#/themes">Sky</a> -
+						<a href="?theme=beige#/themes">Beige</a> -
+						<a href="?theme=simple#/themes">Simple</a> -
+						<a href="?theme=serif#/themes">Serif</a> -
+						<a href="?theme=night#/themes">Night</a> <br>
+						<a href="?theme=moon.css#/themes">Moon</a> -
+						<a href="?theme=simple.css#/themes">Simple</a> -
+						<a href="?theme=solarized.css#/themes">Solarized</a>
+					</p>
+					<p>
+						<small>
+							* Theme demos are loaded after the presentation which leads to flicker. In production you should load your theme in the <code>&lt;head&gt;</code> using a <code>&lt;link&gt;</code>.
+						</small>
+					</p>
+				</section>
+
+				<section>
+					<h2>Global State</h2>
+					<p>
+						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
+						will be added as a class to the document element when the slide is open. This lets you
+						apply broader style changes, like switching the background.
+					</p>
+				</section>
+
+				<section data-state="customevent">
+					<h2>Custom Events</h2>
+					<p>
+						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
+					</p>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+Reveal.addEventListener( 'customevent', function() {
+	console.log( '"customevent" has fired' );
+} );
+					</code></pre>
+				</section>
+
+				<section>
+					<section data-background="#007777">
+						<h2>Slide Backgrounds</h2>
+						<p>
+							Set <code>data-background="#007777"</code> on a slide to change the full page background to the given color. All CSS color formats are supported.
+						</p>
+						<a href="#" class="image navigate-down">
+							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+						</a>
+					</section>
+					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png">
+						<h2>Image Backgrounds</h2>
+						<pre><code>&lt;section data-background="image.png"&gt;</code></pre>
+					</section>
+					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" data-background-repeat="repeat" data-background-size="100px">
+						<h2>Repeated Image Backgrounds</h2>
+						<pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
+					</section>
+				</section>
+
+				<section data-transition="linear" data-background="#4d7e65" data-background-transition="slide">
+					<h2>Background Transitions</h2>
+					<p>
+						Pass reveal.js the <code>backgroundTransition: 'slide'</code> config argument to make backgrounds slide rather than fade.
+					</p>
+				</section>
+
+				<section data-transition="linear" data-background="#8c4738" data-background-transition="slide">
+					<h2>Background Transition Override</h2>
+					<p>
+						You can override background transitions per slide by using <code>data-background-transition="slide"</code>.
+					</p>
+				</section>
+
+				<section>
+					<h2>Clever Quotes</h2>
+					<p>
+						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
+					</p>
+					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
+						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
+					</blockquote>
+				</section>
+
+				<section>
+					<h2>Pretty Code</h2>
+					<pre><code data-trim contenteditable>
+function linkify( selector ) {
+  if( supports3DTransforms ) {
+
+    var nodes = document.querySelectorAll( selector );
+
+    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
+      var node = nodes[i];
+
+      if( !node.className ) {
+        node.className += ' roll';
+      }
+    }
+  }
+}
+					</code></pre>
+					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
+				</section> -->
+
+		
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
